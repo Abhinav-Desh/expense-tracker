@@ -2,17 +2,20 @@
 
 import { useState } from "react";
 
-const ExpenseForm = ()=>{
+const ExpenseForm = ({onAddExpense})=>{
     const [description, setDescription] = useState("");// store the sentence that you write on input
     const [Amount,setAmount] = useState("");//store the amount
     const [date,setDate] = useState("");
     const [category,setCategory]=useState("");
 
-
+    
     const handleSubmit = (e)=>{
         e.preventDefault();
 
-        if(!description || !Amount || !date || !category)return;
+        if(!description || !Amount || !date || !category){
+            alert('please select all fields');
+            return;
+        }
         // store in the form of object
         const newExpense = {
             id:Date.now(),
@@ -21,6 +24,11 @@ const ExpenseForm = ()=>{
             date,
             category,
         };
+        onAddExpense(newExpense);
+        setDescription("");
+        setAmount("");
+        setDate("");
+        setCategory("");
         
     }
 return (
