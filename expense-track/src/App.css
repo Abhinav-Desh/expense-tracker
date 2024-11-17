@@ -1,38 +1,231 @@
-.App {
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f0f2f5;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #4CAF50;
+  text-align: center;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body.dark-mode h1 {
+  color: #76ff03;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body.dark-mode h2 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .expense-filter,
+body.dark-mode .expense-form,
+body.dark-mode .expense-list {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+body.dark-mode .expense-filter input,
+body.dark-mode .expense-filter select,
+body.dark-mode .expense-form input,
+body.dark-mode .expense-form select,
+body.dark-mode .expense-list li {
+  background-color: #444;
+  color: #f5f5f5;
+  border: 1px solid #666;
+}
+
+body.dark-mode .expense-filter input:focus,
+body.dark-mode .expense-filter select:focus,
+body.dark-mode .expense-form input:focus,
+body.dark-mode .expense-form select:focus {
+  border-color: #4CAF50;
+}
+
+/* Expense Tracker Components */
+
+/* Expense Form Styles */
+.expense-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.expense-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.expense-form input,
+.expense-form select,
+.expense-form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+
+.expense-form input:focus,
+.expense-form select:focus,
+.expense-form button:focus {
+  border-color: #4CAF50;
+}
+
+.expense-form button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.expense-form button:hover {
+  background-color: #45a049;
+}
+
+/* Expense Filter Styles */
+.expense-filter {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group {
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.filter-label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filter-select,
+.filter-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+  border-color: #4CAF50;
+}
+
+.filter-select {
+  background-color: #f5f5f5;
+}
+
+.filter-input[type="date"] {
+  background-color: #f5f5f5;
+}
+
+/* Expense List Styles */
+.expense-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.expense-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.expense-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.expense-list li:last-child {
+  border-bottom: none;
+}
+
+.expense-list li:hover {
+  background-color: #f4f4f4;
+}
+
+.expense-list li span {
+  color: #888;
+}
+
+/* Expense Summary Styles */
+.expense-summary {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4CAF50;
+}
+
+.expense-summary span {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #4CAF50;
+}
+
+.theme-toggle i {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+body.dark-mode .theme-toggle i {
+  color: #f5f5f5;
 }
