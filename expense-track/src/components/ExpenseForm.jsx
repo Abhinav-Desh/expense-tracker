@@ -1,4 +1,6 @@
 import { useState } from "react";
+import moment from "moment";
+
 
 const ExpenseForm = ({ onAddExpense }) => {
   const [description, setDescription] = useState(""); // store the description
@@ -6,11 +8,12 @@ const ExpenseForm = ({ onAddExpense }) => {
   const [date, setDate] = useState(""); // store the date
   const [category, setCategory] = useState(""); // store the category
 
+//  console.log(());
   const handleSubmit = (e) => {
     e.preventDefault();
     
     // Validation: check if all fields are filled
-    if (!description || !amount || !date || !category) {
+    if (!description || !amount  || !category) {
         alert('Please fill in all fields');
         return;
     }
@@ -21,18 +24,19 @@ const ExpenseForm = ({ onAddExpense }) => {
       return;
     }
 
+    // make in object 
     const newExpense = {
         id: Date.now(),
         description,
         amount: parseFloat(amount),
-        date,
-        category: category || "Uncategorized", // Fallback category
+        date:moment(Date.now()).format('yyyy-mm-DD'),
+        category: category || "Uncategorized", 
     };
 
-    // Pass the new expense to the parent component
+   
     onAddExpense(newExpense);
+    console.log(newExpense);
     
-    // Reset the form after submission
     setDescription("");
     setAmount("");
     setDate("");
@@ -41,7 +45,7 @@ const ExpenseForm = ({ onAddExpense }) => {
 
   return (
     <form onSubmit={handleSubmit} className="expense-form">
-      {/* Description Input */}
+      
       <div className="form-group">
         <label htmlFor="description">Description:</label>
         <input
@@ -54,7 +58,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         />
       </div>
 
-      {/* Amount Input */}
+      
       <div className="form-group">
         <label htmlFor="amount">Amount:</label>
         <input
@@ -69,19 +73,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         />
       </div>
 
-      {/* Date Input */}
-      <div className="form-group">
-        <label htmlFor="date">Date:</label>
-        <input
-          id="date"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="form-input"
-        />
-      </div>
-
-      {/* Category Select */}
+     
       <div className="form-group">
         <label htmlFor="category">Category:</label>
         <select
@@ -100,7 +92,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         </select>
       </div>
 
-      {/* Submit Button */}
+      
       <button type="submit" className="submit-button">Add Expense</button>
     </form>
   );

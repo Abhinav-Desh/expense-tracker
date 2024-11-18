@@ -14,17 +14,17 @@ function App() {
 
   useEffect(() => {
     const savedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
+    console.log("saved-->",savedExpenses);
     // Ensure all items in the expenses array have valid 'category' and are not undefined
-    const validExpenses = savedExpenses.filter((expense) => expense && expense.category);
-
-    setExpenses(validExpenses);
+    // const validExpenses = savedExpenses.filter((expense) => expense && expense.category);
+    console.log(savedExpenses);
+    setExpenses(savedExpenses);
   }, []);
 
   // Save expenses to localStorage whenever the expenses list changes
-  useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
+  // useEffect(() => {
+
+  // }, [expenses]);
 
   // Calculate total expenses and update state
   useEffect(() => {
@@ -55,13 +55,17 @@ function App() {
 
   // Handle adding a new expense with a callback to avoid unnecessary re-renders
   const handleAddExpense = useCallback((expense) => {
+
     setExpenses((prevExpenses) => [...prevExpenses, expense]);
+    localStorage.setItem('expenses', JSON.stringify([...expenses, expense]))
   }, []);
+
 
   // Handle filter change with a callback
   const handleFilterChange = useCallback((newFilter) => {
     setFilter(newFilter);
   }, []);
+
 
   return (
     <div className={isDarkMode ? "dark-mode" : ""}>
@@ -70,7 +74,7 @@ function App() {
       <ExpenseForm onAddExpense={handleAddExpense} />
       <ExpenseFilter filter={filter} setFilter={handleFilterChange} />
       <ExpenseSummary totalExpenses={showTotalExpenses} />
-      <ExpenseList expenses={filteredExpenses} />
+      <ExpenseList expenses={expenses} />
     </div>
   );
 }

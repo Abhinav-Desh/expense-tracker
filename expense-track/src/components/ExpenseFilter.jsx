@@ -4,7 +4,7 @@ const ExpenseFilter = ({ filter, setFilter }) => {
       setFilter({ ...filter, category: e.target.value });
     };
   
-    
+ 
     const handleDateChange = (start, end) => {
       setFilter({ ...filter, dateRange: [start, end] });  
     };

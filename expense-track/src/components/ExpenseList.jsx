@@ -1,4 +1,6 @@
 const ExpenseList = ({ expenses }) => {
+    console.log("expenses-->",expenses);
+    
     return (
       <div className="expense-list">
         <h2>Expenses List</h2>

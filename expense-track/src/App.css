@@ -22,7 +22,7 @@ h2 {
   text-align: center;
 }
 
-/* Dark Mode */
+
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
@@ -60,9 +60,6 @@ body.dark-mode .expense-form select:focus {
   border-color: #4CAF50;
 }
 
-/* Expense Tracker Components */
-
-/* Expense Form Styles */
 .expense-form {
   max-width: 600px;
   margin: 0 auto;
@@ -107,7 +104,7 @@ body.dark-mode .expense-form select:focus {
   background-color: #45a049;
 }
 
-/* Expense Filter Styles */
+
 .expense-filter {
   max-width: 800px;
   margin: 0 auto;
